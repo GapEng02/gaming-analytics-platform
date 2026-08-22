@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Analytics Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Auth Screen -->
+    <div id="authScreen" class="container">
+        <div class="auth-box">
+            <h1>🎮 Gaming Analytics</h1>
+            <div id="loginForm">
+                <h2>Login</h2>
+                <input type="text" id="loginUsername" placeholder="Username">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+            </div>
+            <div id="registerForm" style="display:none;">
+                <h2>Register</h2>
+                <input type="text" id="registerUsername" placeholder="Username">
+                <input type="password" id="registerPassword" placeholder="Password (min 6 chars)">
+                <button onclick="register()">Register</button>
+                <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" style="display:none;">
+        <nav>
+            <div class="nav-brand">🎮 Gaming Analytics</div>
+            <div class="nav-user">
+                <span id="usernameDisplay"></span>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <button class="game-btn active" onclick="showGame('tictactoe')">Tic-Tac-Toe</button>
+                <button class="game-btn" onclick="showGame('rps')">Rock Paper Scissors</button>
+                <button class="game-btn" onclick="showGame('calculator')">Calculator</button>
+                <button class="game-btn" onclick="showGame('stats')">📊 Stats</button>
+                <button class="game-btn" onclick="showGame('leaderboard')">🏆 Leaderboard</button>
+            </aside>
+
+            <!-- Game Area -->
+            <main class="game-area">
+                <!-- Tic-Tac-Toe -->
+                <div id="tictactoe" class="game-content active">
+                    <h2>Tic-Tac-Toe</h2>
+                    <div id="tictactoeStatus">Your turn</div>
+                    <div class="board" id="tictactoeBoard"></div>
+                    <button onclick="resetGame('tictactoe')">New Game</button>
+                </div>
+
+                <!-- Rock Paper Scissors -->
+                <div id="rps" class="game-content">
+                    <h2>Rock Paper Scissors</h2>
+                    <div id="rpsStatus">Choose your move</div>
+                    <div class="rps-choices">
+                        <button onclick="playRPS('rock')">🪨 Rock</button>
+                        <button onclick="playRPS('paper')">📄 Paper</button>
+                        <button onclick="playRPS('scissors')">✂️ Scissors</button>
+                    </div>
+                    <div id="rpsResult"></div>
+                    <button onclick="resetGame('rps')">New Game</button>
+                </div>
+
+                <!-- Calculator -->
+                <div id="calculator" class="game-content">
+                    <h2>Calculator</h2>
+                    <div class="calc-display">
+                        <input type="text" id="calcInput" placeholder="Enter expression (e.g., 2+3*4)">
+                        <button onclick="calculate()">=</button>
+                    </div>
+                    <div id="calcResult"></div>
+                    <div id="calcHistory"></div>
+                    <button onclick="clearCalc()">Clear</button>
+                </div>
+
+                <!-- Stats -->
+                <div id="stats" class="game-content">
+                    <h2>Your Statistics</h2>
+                    <div id="statsContent"></div>
+                </div>
+
+                <!-- Leaderboard -->
+                <div id="leaderboard" class="game-content">
+                    <h2>🏆 Leaderboard</h2>
+                    <div id="leaderboardContent"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
